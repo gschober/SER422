@@ -71,7 +71,7 @@ public class Lab5Calc extends HttpServlet {
 		
 		String value = object.toJSONString();
 		
-		response.setContentType("application/json");
+		response.setContentType("text/plain");
 		
 		PrintWriter writer = response.getWriter();
 		writer.write(value);

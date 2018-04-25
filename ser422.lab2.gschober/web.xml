@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+  <display-name>SER422Lab 2</display-name>
+  <description>Lab 2 GSchober</description>
+  
+  <servlet>
+    <servlet-name>Controller</servlet-name>
+    <servlet-class>ser422.lab2.gschober.ControllerServlet</servlet-class>
+    <init-param>
+    	<param-name>personfile</param-name>
+    	<param-value>personfile.xml</param-value>
+  	</init-param>
+  </servlet>
+  
+  <servlet>
+  	<servlet-name>WelcomeServlet</servlet-name>
+    <servlet-class>ser422.lab2.gschober.Welcome</servlet-class>
+    
+  </servlet>
+  
+    <servlet>
+  	<servlet-name>UserServlet</servlet-name>
+    <servlet-class>ser422.lab2.gschober.UserController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>Controller</servlet-name>
+    <url-pattern>/controller</url-pattern>
+  </servlet-mapping>
+  
+ <servlet-mapping>
+    <servlet-name>WelcomeServlet</servlet-name>
+    <url-pattern>/welcome</url-pattern>
+ </servlet-mapping>
+
+ <servlet-mapping>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/usercontroller</url-pattern>
+ </servlet-mapping>
+
+</web-app>
