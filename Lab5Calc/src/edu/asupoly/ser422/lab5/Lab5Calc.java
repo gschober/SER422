@@ -65,17 +65,22 @@ public class Lab5Calc extends HttpServlet {
 		String year = request.getParameter("year");
 
 		double grade = calculateGrade(year,subject);
-				
+
 		JSONObject object = new JSONObject();
 		object.put("grade",new Double(grade));
 		
 		String value = object.toJSONString();
 		
-		response.setContentLength(value.length());
+		response.setContentType("application/json");
+		
+		PrintWriter writer = response.getWriter();
+		writer.write(value);
+		writer.close();
+		/*response.setContentLength(value.length());
 		
 		response.getOutputStream().write(value.getBytes());
 		response.getOutputStream().flush();
-		response.getOutputStream().close();
+		response.getOutputStream().close();*/
 	}
 	
 	// This is what you need to implement in a subclass!

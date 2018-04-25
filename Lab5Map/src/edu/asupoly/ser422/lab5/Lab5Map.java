@@ -21,7 +21,7 @@ public class Lab5Map extends HttpServlet {
 		String letterGrade = mapToLetterGrade(grade);
 		
 		JSONObject object = new JSONObject();
-		object.put("letterGrade",letterGrade);
+		object.put("grade",letterGrade);
 		
 		String returnValue = object.toJSONString();
 		
