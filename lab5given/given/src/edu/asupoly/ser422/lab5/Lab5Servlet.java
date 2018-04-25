@@ -48,8 +48,8 @@ public class Lab5Servlet extends HttpServlet {
 			//throw new Exception("Could not open property file");
 		}
 		
-		__mapUrl = "localhost:" + props.getProperty("map.url") +"/lab5Map/lab5Map?";
-		__calcUrl = "localhost:" + props.getProperty("calc.url") +"/lab5Calc/lab5Calc?";
+		__mapUrl = "http://localhost:" + props.getProperty("map.url") +"/lab5Map/lab5Map?";
+		__calcUrl = "http://localhost:" + (String)props.getProperty("calc.url") +"/lab5Calc/lab5Calc?";
 	}
 	
 	
@@ -78,7 +78,9 @@ public class Lab5Servlet extends HttpServlet {
 		String response = "";
 		
 		try {		
-			response = sendGet(new URL(__calcUrl+"subject="+subject+"&year="+year));
+			URL calc = new URL(__calcUrl+"subject="+subject+"&year="+year);
+			//URL calc = new URL("http://localhost:8081/lab5Calc/lab5Calc?subject=History&year=1");
+			response = sendGet(calc);
 		} catch (Exception e) {
 			pageBuf.append("\n\t<br/>Code 503: Service Unavailable");
 			isValid = false;
@@ -108,7 +110,7 @@ public class Lab5Servlet extends HttpServlet {
 		
 		if(isValid){
 			try{
-				response = sendGet(new URL(__mapUrl+"?grade="+gradeValue));
+				response = sendGet(new URL(__mapUrl+"grade="+gradeValue));
 			}catch(Exception e){
 				pageBuf.append("\n\t<br/>Code 503: Service Unavaileble");
 				isValid = false;
